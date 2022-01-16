@@ -1,3 +1,5 @@
+import {createElement} from '../utils.js';
+
 const getUserStatus = (filmsWatched) => {
   if(filmsWatched === 0){
     return '';
@@ -22,4 +24,27 @@ const createUserStatusTemplate = (filmsWatched) => {
   );
 };
 
-export {createUserStatusTemplate};
+class UserStatus {
+  constructor(moviesWatched) {
+    this._moviesWatched = moviesWatched;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createUserStatusTemplate(this._moviesWatched);
+  }
+
+  getElement() {
+    if(!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+
+export default UserStatus;

@@ -1,3 +1,5 @@
+import {createElement} from '../utils.js'
+
 const createNavigationTemplate = (filter) => {
   return (
     `<nav class="main-navigation">
@@ -12,4 +14,27 @@ const createNavigationTemplate = (filter) => {
   )
 };
 
-export {createNavigationTemplate};
+class NavigationMenu {
+  constructor(filter) {
+    this._filter = filter;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createNavigationTemplate(this._filter);
+  }
+
+  getElement() {
+    if(!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+
+export default NavigationMenu;

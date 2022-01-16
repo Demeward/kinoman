@@ -42,10 +42,12 @@ html {
 }
 
 body {
-  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   max-width: 1240px;
   padding: var(--vertical-gap) var(--horizontal-gap) 0;
   width: 100%;
+  min-height: 100%;
 }
 
 .hide-overflow {
