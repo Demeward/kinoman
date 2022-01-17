@@ -1,4 +1,5 @@
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const createContentAreaTemplate = () => {
   return (
@@ -10,7 +11,6 @@ const createContentAreaTemplate = () => {
 
       </div>
 
-      <button class="films-list__show-more">Show more</button>
     </section>
 
     <section class="films-list--extra">
@@ -32,25 +32,10 @@ const createContentAreaTemplate = () => {
   )
 };
 
-class ContentArea {
-  constructor() {
-    this._element = null;
-  }
+class ContentArea extends AbstractComponent {
 
   getTemplate() {
     return createContentAreaTemplate();
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
 

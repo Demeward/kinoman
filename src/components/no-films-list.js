@@ -1,4 +1,5 @@
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const createEmptyFilmsListTemplate = () => {
   return (
@@ -10,25 +11,10 @@ const createEmptyFilmsListTemplate = () => {
   )
 }
 
-class EmptyFilmsList {
-  constructor() {
-    this._element = null;
-  }
+class EmptyFilmsList extends AbstractComponent  {
 
   getTemplate() {
     return createEmptyFilmsListTemplate();
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
 

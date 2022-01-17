@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const createCommentMarkup = (comment) => {
   return (
@@ -162,26 +163,23 @@ const createFilmDetailsPopupTemplate = (film) => {
   )
 };
 
-class FilmPopup {
+class FilmPopup extends AbstractComponent {
   constructor(film) {
+    super();
+
     this._film = film;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmDetailsPopupTemplate(this._film);
   }
 
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
+  setClickHandler(handler) {
+    this.getElement().querySelector('.film-details__close-btn').addEventListener('click', handler);
   }
 
-  removeElement() {
-    this._element = null;
+  removeClickHandler(handler) {
+    this.getElement().querySelector('.film-details__close-btn').removeEventListener('click', handler);
   }
 }
 

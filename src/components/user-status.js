@@ -1,4 +1,5 @@
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const getUserStatus = (filmsWatched) => {
   if(filmsWatched === 0){
@@ -24,26 +25,15 @@ const createUserStatusTemplate = (filmsWatched) => {
   );
 };
 
-class UserStatus {
+class UserStatus extends AbstractComponent {
   constructor(moviesWatched) {
+    super();
+
     this._moviesWatched = moviesWatched;
-    this._element = null;
   }
 
   getTemplate() {
     return createUserStatusTemplate(this._moviesWatched);
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
 

@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const getUserDetails = (userDetails) => {
   if (userDetails) {
@@ -31,26 +32,22 @@ const createFilmCardTemplate = (film) => {
   )
 };
 
-class FilmCard {
+class FilmCard extends AbstractComponent {
   constructor(film) {
+    super();
+
     this._film = film;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmCardTemplate(this._film);
   }
 
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setClickHandler(handler) {
+    this.getElement().querySelectorAll('.film-card__poster, .film-card__title, .film-card__comments')
+     .forEach((element) => {
+       element.addEventListener('click', handler);
+     })
   }
 }
 

@@ -1,4 +1,5 @@
-import {createElement} from '../utils.js';
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const createFilterTemplate = () => {
   return (
@@ -10,25 +11,10 @@ const createFilterTemplate = () => {
   )
 };
 
-class SortFilms {
-  constructor() {
-    this._element = null;
-  }
+class SortFilms extends AbstractComponent {
 
     getTemplate() {
       return createFilterTemplate();
-    }
-
-    getElement() {
-      if(!this._element) {
-        this._element = createElement(this.getTemplate());
-      }
-
-      return this._element;
-    }
-
-    removeElement() {
-      this._element = null;
     }
 }
 

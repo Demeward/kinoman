@@ -1,4 +1,5 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils/render.js';
+import {AbstractComponent} from './abstract-component';
 
 const createNavigationTemplate = (filter) => {
   return (
@@ -14,26 +15,15 @@ const createNavigationTemplate = (filter) => {
   )
 };
 
-class NavigationMenu {
+class NavigationMenu extends AbstractComponent {
   constructor(filter) {
+    super();
+
     this._filter = filter;
-    this._element = null;
   }
 
   getTemplate() {
     return createNavigationTemplate(this._filter);
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
 
