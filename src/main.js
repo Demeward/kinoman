@@ -1,7 +1,6 @@
 import PageController from './controllers/page-controller.js';
 import UserStatus from './components/user-status.js';
 import NavigationMenu from './components/navigation-menu.js';
-import SortFilms from './components/filter.js';
 import MovieCount from './components/movie-count.js';
 import {generateFilmCard} from './mock/film-card-mock.js';
 import {generateFilter} from './mock/filter-mock.js';
@@ -22,6 +21,5 @@ const pageController = new PageController(mainElement);
 
 render(headerElement, new UserStatus(filters.alreadyWatched), RenderPosition.BEFOREEND);
 render(mainElement, new NavigationMenu(filters), RenderPosition.BEFOREEND);
-render(mainElement, new SortFilms(filters), RenderPosition.BEFOREEND);
 pageController.render(filmCards);
 render(footerStats, new MovieCount(filmCards), RenderPosition.BEFOREEND);
