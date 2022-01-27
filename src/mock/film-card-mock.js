@@ -39,7 +39,7 @@ const generateComment = () => {
     id: getRandomInt(0, 100),
     author: 'Ilya O`Reilly',
     comment: 'a film that changed my life, a true masterpiece, post-credit scene was just amazing omg.',
-    date: dayjs().format('YYYY/MM/D HH:mm'),
+    date: '2019-05-11T16:12:32.554',
     emotion: getRandomArrayElement(commentEmotions),
   }
 }
@@ -51,26 +51,25 @@ const generateFilmCard = () => {
     filmInfo: {
       title: getRandomArrayElement(filmTitles),
       alternativeTitle: 'Laziness Who Sold Themselves',
-      rating: getRandomInt(1, 10),
+      rating: getRandomInt(0, 10),
       poster: getRandomArrayElement(filmPosters),
       ageRating: 0,
       director: 'Tom Ford',
       writers: ["Takeshi Kitano"],
       actors: ["Morgan Freeman"],
       release: {
-        date: dayjs().format('D/MMMM/YYYY'),
+        date: '2019-05-11T00:00:00.000Z',
         releaseCountry: 'Finland'
       },
       runtime: '77',
       genre: ['Comedy'],
       description: getRandomLengthArray(filmDescriptions, MAX_DESCRIPTION_LENGTH)
     },
-    userDetails: {
-      isWatchlist: Boolean(getRandomInt(0, 1)),
-      isAlreadyWatched: Boolean(getRandomInt(0, 1)),
-      watchingDate: dayjs().format('D/MMMM/YYYY'),
-      isFavorite: Boolean(getRandomInt(0, 1)),
-    }
+    isWatchlist: Boolean(getRandomInt(0, 1)),
+    isAlreadyWatched: Boolean(getRandomInt(0, 1)),
+    watchingDate: dayjs().format('D/MMMM/YYYY'),
+    isFavorite: Boolean(getRandomInt(0, 1)),
+
   }
 }
 

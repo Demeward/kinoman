@@ -54,6 +54,11 @@ body {
   overflow: hidden;
 }
 
+.hide-overflow .film-details {
+  width: 1500px;
+  left: 1100px;
+}
+
 a:link {
   opacity: 1;
   text-decoration: none;
