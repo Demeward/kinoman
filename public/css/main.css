@@ -42,21 +42,14 @@ html {
 }
 
 body {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  box-sizing: border-box;
   max-width: 1240px;
   padding: var(--vertical-gap) var(--horizontal-gap) 0;
   width: 100%;
-  min-height: 100%;
 }
 
 .hide-overflow {
   overflow: hidden;
-}
-
-.hide-overflow .film-details {
-  width: 1500px;
-  left: 1100px;
 }
 
 a:link {
@@ -522,6 +515,11 @@ button {
   background: url('../images/background.png') no-repeat 50% 0;
   display: flex;
   height: 100px;
+}
+
+.footer .film-details {
+  width: 1500px;
+  left: 1100px;
 }
 
 .footer__logo {

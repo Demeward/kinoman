@@ -1,21 +1,21 @@
-import {createElement} from '../utils/render.js';
+import {createElement} from "../utils/render.js";
 
-class AbstractComponent {
+export default class AbstractComponent {
   constructor() {
-     if (new.target === AbstractComponent) {
-       throw new Error('Can`t instantiate Abstract, only concrete one.');
-     }
+    if (new.target === AbstractComponent) {
+      throw new Error(`Can't instantiate AbstractComponent, only concrete one.`);
+    }
 
-     this._element = null;
+    this._element = null;
   }
 
   getTemplate() {
-    throw new Error('Abstract method not implemented: getTemplate');
+    throw new Error(`Abstract method not implemented: getTemplate`);
   }
 
   getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate())
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
     }
 
     return this._element;
@@ -24,6 +24,17 @@ class AbstractComponent {
   removeElement() {
     this._element = null;
   }
-}
 
-export {AbstractComponent};
+  show() {
+    if (this._element) {
+
+      this._element.classList.remove(`visually-hidden`);
+    }
+  }
+
+  hide() {
+    if (this._element) {
+      this._element.classList.add(`visually-hidden`);
+    }
+  }
+}
